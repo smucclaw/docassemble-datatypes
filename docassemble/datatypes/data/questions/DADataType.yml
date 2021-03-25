@@ -1,0 +1,79 @@
+modules:
+  - .DADataType
+---
+generic object: DADTBoolean
+question: ${ x.object_name() }?
+yesno: x.value
+---
+generic object: DADTContinue
+question: ${ x.object_name() }
+field: x.value
+---
+generic object: DADTNumber
+question: What is the value of ${ x.object_name() }?
+fields:
+  - ${ x.object_name() }: x.value
+    datatype: number
+---
+generic object: DADTEmail
+question: What is ${ x.object_name() } (an email address)?
+fields:
+  - ${ x.object_name() }: x.value
+    datatype: email
+---
+generic object: DADTString
+question: What is ${ x.object_name() }?
+fields:
+  - ${ x.object_name() }: x.value
+    datatype: text
+---
+generic object: DADTDate
+question: What date is ${ x.object_name() }?
+fields:
+  - ${ x.object_name() }: x.value
+    datatype: date
+---
+generic object: DADTTime
+question: When is ${ x.object_name() }?
+fields:
+  - ${ x.object_name() }: x.value
+    datatype: time
+---
+generic object: DADTDateTime
+question: When is ${ x.object_name() }?
+fields:
+  - ${ x.object_name() }: x.value
+    datatype: datetime
+---
+generic object: DADTYesNoMaybe
+question: ${ x.object_name() }?
+yesnomaybe: x.value
+---
+generic object: DADTFile
+question: Upload a file ${ x.object_name() }
+fields:
+  - ${ x.object_name() } : x.value
+    datatype: file
+---
+generic object: DAList
+question: Are there any ${ x.object_name() }
+yesno: x.there_are_any 
+---
+generic object: DAList
+question: Is there another of ${ x.object_name() }
+yesno: x.there_is_another
+---
+generic object: DADTEnum
+question: What is your choice ${ x.object_name() }
+fields:
+  - ${ x.object_name() }: x.value
+    datatype: radio
+    code: |
+      x.options
+---
+generic object: DADTObjectRef
+question: Which of these is ${ x.object_name() }?
+fields:
+  - ${ x.object_name() }: x.value
+    datatype: object
+    choices: x.source

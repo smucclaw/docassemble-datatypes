@@ -1,0 +1,43 @@
+include:
+  - DADataType.yml
+---
+objects:
+  - terms: DADTContinue
+  - person: DAList.using(object_type=DADTString,complete_attribute='complete')
+  - person[i].birthdate: DADTDate
+  - are_you_sure: DADTBoolean
+  - person[i].likes_cats: DADTYesNoMaybe
+  - person[i].favourite_fruit: |
+      DADTEnum.using(options=[{'apple': "Apple"},{'orange': "Orange"}])
+  - best_person: DADTObjectRef.using(source=person)
+---
+code: |
+  person[i].value
+  person[i].birthdate.value
+  person[i].likes_cats.value
+  person[i].favourite_fruit.value
+  person[i].complete = True
+---
+mandatory: True
+question: Summary
+subquestion: |
+  % if terms:
+    The user agreed to the terms. (But then we didn't give them a choice.)
+  % endif
+  
+  The people are ${ person }.
+  
+  % for p in person:
+    ${ p }'s birthdate is ${ p.birthdate }. Their favourite fruit is ${ p.favourite_fruit }.
+    % if p.likes_cats:
+      They like cats.
+    % endif
+  % endfor
+  
+  Your favourite person is ${ best_person}.
+  
+  % if are_you_sure:
+    You are sure.
+  % else:
+    You are not sure.
+  % endif
