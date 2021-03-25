@@ -21,6 +21,9 @@ This is useful for fast prototyping of docassemble interviews, and for automatic
 
 Install from this repository using the docassemble package manager feature.
 
+You should then be able to access a demonstration interview at `http://localhost/interview?i=docassemble.datatypes:datatypes_test.yml`, where you replace
+the hostname to the name of your docassemble server.
+
 ## Usage
 
 Add the following line to an `include:` block in your interview:
