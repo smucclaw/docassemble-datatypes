@@ -44,6 +44,7 @@ Then, add the objects that you want to collect to your `objects:` block:
  * DADTNumber
  * DADTBoolean
  * DADTContinue
+  
   If you collect this value, it will force the user to set the value to True
   before they can continue the interview. This is useful to simulate a terms
   of service requirement.
@@ -51,6 +52,7 @@ Then, add the objects that you want to collect to your `objects:` block:
  * DADTEmail
  * DADTFile
  * DADTEnum
+  
   A DADTEnum object is a choice between a fixed set of options. To create this
   type you must provide an `options` attribute, which sets out a dictionary
   of options to display, and their internal values. Because of the way YAML
@@ -64,6 +66,7 @@ Then, add the objects that you want to collect to your `objects:` block:
         DADTEnum.using(options={'o': 'Oranges', 'a': 'Apples'})
   ```
  * DADTObjectRef
+  
   A DADTObjectRef is a reference to an object that was collected in another DAList.  To create this type, you must provide a `source` attribute that
   refers to a DAList object as follows:
   ```
